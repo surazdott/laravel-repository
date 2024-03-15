@@ -38,7 +38,7 @@ php artisan make:repository UserRepository --all
 // Generate service class
 php artisan make:repository-service UserService
 
-Generate interface class
+// Generate interface class
 php artisan make:repository-interface UserRepositoryInterface
 ```
 
