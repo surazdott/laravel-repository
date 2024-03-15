@@ -1,9 +1,10 @@
 {
-    "name": "surazdott/laravel-repository-pattern",
+    "name": "surazdott/laravel-repository",
     "description": "Laravel repository design pattern with service and interface.",
     "type": "package",
     "keywords": [
         "laravel",
+        "laravel-repository",
         "repository-pattern",
         "service-container",
         "laravel-design-pattern",
