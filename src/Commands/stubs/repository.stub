@@ -1,0 +1,16 @@
+<?php
+
+namespace {{ namespace }};
+
+use SurazDott\Repositories\BaseRepository;
+
+class {{ class }} extends BaseRepository
+{
+    /**
+     * Create new repository instance.
+     */
+    public function __construct()
+    {
+        //
+    }
+}

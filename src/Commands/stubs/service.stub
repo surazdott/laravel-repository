@@ -1,0 +1,16 @@
+<?php
+
+namespace {{ namespace }};
+
+use SurazDott\Services\BaseService;
+
+class {{ class }} extends BaseService
+{
+    /**
+     * Create new service instance.
+     */
+    public function __construct()
+    {
+        //
+    }
+}
