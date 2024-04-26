@@ -27,16 +27,16 @@ interface BaseRepositoryInterface
     public function paginate(string $perPage): LengthAwarePaginator;
 
     /**
-     * Find database record by id.
+     * Find database record by ID.
      *
-     * @param  mixed  $id
+     * @param  string  $id
      */
     public function find(string $id): ?Model;
 
     /**
      * Find or fail database record.
      *
-     * @param  mixed  $id
+     * @param  string  $id
      */
     public function findOrFail(string $id): Model;
 
@@ -48,28 +48,21 @@ interface BaseRepositoryInterface
     /**
      * Create a record in the database.
      *
-     * @param  mixed  $data
+     * @param  array  $data
      */
     public function create(array $data): Model;
 
     /**
      * Update the model in the database.
      *
-     * @param  mixed  $id
+     * @param  string  $id, array $data
      */
     public function update(string $id, array $data): bool;
 
     /**
-     * Delete the model from the database.
+     * Delete the models for the given IDs.
      *
-     * @param  mixed  $id
+     * @param  \Illuminate\Support\Collection|array|int|string  $ids
      */
-    public function delete(string $id): bool;
-
-    /**
-     * Delete the records from the database.
-     * 
-     * @param array $ids
-     */
-    public function deleteMultiple(array $ids): bool;
+    public function delete(mixed $ids): bool;
 }

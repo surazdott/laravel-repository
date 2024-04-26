@@ -30,19 +30,9 @@ class BaseService
      *
      * @param  string  $perPage
      */
-    public function paginate($perPage): LengthAwarePaginator
+    public function paginate(string $perPage): LengthAwarePaginator
     {
         return $this->repository->paginate($perPage);
-    }
-
-    /**
-     * Get filtered database records.
-     * 
-     * @param  array  $filters
-     */
-    public function filter(array $filters): Builder
-    {
-        return $this->repository->filter($filters);
     }
 
     /**
@@ -50,7 +40,7 @@ class BaseService
      *
      * @param  string  $id
      */
-    public function find($id): ?Model
+    public function find(string $id): ?Model
     {
         return $this->repository->find($id);
     }
@@ -60,7 +50,7 @@ class BaseService
      *
      * @param  string  $id
      */
-    public function findOrFail($id): Model
+    public function findOrFail(string $id): Model
     {
         return $this->repository->findOrFail($id);
     }
@@ -78,38 +68,28 @@ class BaseService
      *
      * @param  array  $data
      */
-    public function create($data): Model
+    public function create(array $data): Model
     {
         return $this->repository->create($data);
     }
 
     /**
-     * Update database record by id.
+     * Update database record by ID.
      *
      * @param  string  $id
      */
-    public function update($id, array $data): bool
+    public function update(string $id, array $data): bool
     {
         return $this->repository->update($id, $data);
     }
 
     /**
-     * Delete database record by id.
+     * Delete the models for the given IDs.
      *
-     * @param  string  $id
+     * @param  \Illuminate\Support\Collection|array|int|string  $ids
      */
-    public function delete($id): bool
+    public function delete(mixed $id): bool
     {
         return $this->repository->delete($id);
-    }
-
-    /**
-     * Delete multiple records from the database.
-     * 
-     * @param array $ids
-     */
-    public function deleteMultiple(array $ids): bool
-    {
-        return $this->repository->deleteMultiple($ids);
     }
 }
