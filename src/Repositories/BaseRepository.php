@@ -29,9 +29,9 @@ class BaseRepository implements BaseRepositoryInterface
     /**
      * Get paginate database records.
      *
-     * @param  int  $perPage
+     * @param  string  $perPage
      */
-    public function paginate(int $perPage): LengthAwarePaginator
+    public function paginate(string $perPage): LengthAwarePaginator
     {
         return $this->model->latest()->paginate($perPage);
     }
@@ -39,19 +39,19 @@ class BaseRepository implements BaseRepositoryInterface
     /**
      * Find database record by ID.
      * 
-     * @param  int|string  $id
+     * @param  string  $id
      */
-    public function find(mixed $id): ?Model
+    public function find(string $id): ?Model
     {
         return $this->model->find($id);
     }
 
     /**
-     * Find or fail database record by ID.
+     * Find or fail database record.
      * 
-     * @param  int|string  $id
+     * @param  string  $id
      */
-    public function findOrFail(mixed $id): Model
+    public function findOrFail(string $id): Model
     {
         return $this->model->findOrFail($id);
     }
@@ -77,16 +77,16 @@ class BaseRepository implements BaseRepositoryInterface
     /**
      * Update database record by ID.
      * 
-     * @param  int|string  $id,  array  $data
+     * @param  string  $id, array $data
      */
-    public function update(mixed $id, array $data): bool
+    public function update(string $id, array $data): bool
     {
         return $this->findOrFail($id)->update($data);
     }
 
     /**
      * Delete the models for the given IDs.
-     * 
+     *
      * @param  \Illuminate\Support\Collection|array|int|string  $ids
      */
     public function delete(mixed $ids): bool

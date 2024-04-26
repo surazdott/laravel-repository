@@ -255,6 +255,60 @@ class UserController extends Controller
 
 ```
 
+## Methods
+Take a look at some of the methods in the following list.
+
+#### `create()`
+To insert a new record into the database, you should use `create` method.
+
+```php
+$data = $request->validated();
+$this->userService->create(array $data);
+```
+
+#### `find()`
+To get the first record from database records, you should use `find` method.
+
+```php
+$this->userService->find(string $id);
+```
+
+#### `first()`
+To get the first record from database records, you should use `first` method.
+
+```php
+$this->userService->first(string $id);
+```
+
+#### `findOrFail()`
+To find specific record from database records, you should use `findOrFail` method.
+
+```php
+$this->userService->findOrFail(string $id);
+```
+
+#### `update()`
+To find specific record from database records, you should use `update` method.
+
+```php
+$data = $request->validated();
+$this->userService->update(string $id, array $data);
+```
+
+#### `delete()`
+To delete records from database, you should use `delete` method and pass integer, array or string.
+
+```php
+$this->userService->delete(mixed $ids);
+```
+
+#### `query()`
+You can build the database builder by using the `query` method and run eloquent queries and model scopes.
+
+```php
+$this->userService->query();
+```
+
 ## Contributing
 If you find any issues or have suggestions for improvements, feel free to open an issue or create a pull request. Contributions are welcome!
 

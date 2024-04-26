@@ -22,23 +22,23 @@ interface BaseRepositoryInterface
     /**
      * Get paginate database records.
      *
-     * @param  int  $perPage
+     * @param  string  $perPage
      */
-    public function paginate(int $perPage): LengthAwarePaginator;
+    public function paginate(string $perPage): LengthAwarePaginator;
 
     /**
      * Find database record by ID.
      *
-     * @param  int|string  $id
+     * @param  string  $id
      */
-    public function find(mixed $id): ?Model;
+    public function find(string $id): ?Model;
 
     /**
-     * Find or fail database record by ID.
+     * Find or fail database record.
      *
-     * @param  int|string  $id
+     * @param  string  $id
      */
-    public function findOrFail(mixed $id): Model;
+    public function findOrFail(string $id): Model;
 
     /**
      * Get first record from database.
@@ -53,11 +53,11 @@ interface BaseRepositoryInterface
     public function create(array $data): Model;
 
     /**
-     * Update database record by ID.
+     * Update the model in the database.
      *
-     * @param  int|string  $id,  array  $data
+     * @param  string  $id, array $data
      */
-    public function update(mixed $id, array $data): bool;
+    public function update(string $id, array $data): bool;
 
     /**
      * Delete the models for the given IDs.

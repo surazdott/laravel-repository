@@ -28,9 +28,9 @@ class BaseService
     /**
      * Get paginate database records.
      *
-     * @param  int  $perPage
+     * @param  string  $perPage
      */
-    public function paginate(int $perPage): LengthAwarePaginator
+    public function paginate(string $perPage): LengthAwarePaginator
     {
         return $this->repository->paginate($perPage);
     }
@@ -38,19 +38,19 @@ class BaseService
     /**
      * Find database record by id.
      *
-     * @param  int|string  $id
+     * @param  string  $id
      */
-    public function find(mixed $id): ?Model
+    public function find(string $id): ?Model
     {
         return $this->repository->find($id);
     }
 
     /**
-     * Find or fail database record by ID.
+     * Find or fail database record.
      *
-     * @param  int|string  $id
+     * @param  string  $id
      */
-    public function findOrFail(mixed $id): Model
+    public function findOrFail(string $id): Model
     {
         return $this->repository->findOrFail($id);
     }
@@ -76,9 +76,9 @@ class BaseService
     /**
      * Update database record by ID.
      *
-     * @param  int|string  $id
+     * @param  string  $id
      */
-    public function update(mixed $id, array $data): bool
+    public function update(string $id, array $data): bool
     {
         return $this->repository->update($id, $data);
     }
@@ -88,8 +88,8 @@ class BaseService
      *
      * @param  \Illuminate\Support\Collection|array|int|string  $ids
      */
-    public function delete(mixed $ids): bool
+    public function delete(mixed $id): bool
     {
-        return $this->repository->delete($ids);
+        return $this->repository->delete($id);
     }
 }
