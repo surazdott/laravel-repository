@@ -28,39 +28,29 @@ class BaseService
     /**
      * Get paginate database records.
      *
-     * @param  string  $perPage
+     * @param  int  $perPage
      */
-    public function paginate($perPage): LengthAwarePaginator
+    public function paginate(int $perPage): LengthAwarePaginator
     {
         return $this->repository->paginate($perPage);
     }
 
     /**
-     * Get filtered database records.
-     * 
-     * @param  array  $filters
-     */
-    public function filter(array $filters): Builder
-    {
-        return $this->repository->filter($filters);
-    }
-
-    /**
      * Find database record by id.
      *
-     * @param  string  $id
+     * @param  int|string  $id
      */
-    public function find($id): ?Model
+    public function find(mixed $id): ?Model
     {
         return $this->repository->find($id);
     }
 
     /**
-     * Find or fail database record.
+     * Find or fail database record by ID.
      *
-     * @param  string  $id
+     * @param  int|string  $id
      */
-    public function findOrFail($id): Model
+    public function findOrFail(mixed $id): Model
     {
         return $this->repository->findOrFail($id);
     }
@@ -78,38 +68,28 @@ class BaseService
      *
      * @param  array  $data
      */
-    public function create($data): Model
+    public function create(array $data): Model
     {
         return $this->repository->create($data);
     }
 
     /**
-     * Update database record by id.
+     * Update database record by ID.
      *
-     * @param  string  $id
+     * @param  int|string  $id
      */
-    public function update($id, array $data): bool
+    public function update(mixed $id, array $data): bool
     {
         return $this->repository->update($id, $data);
     }
 
     /**
-     * Delete database record by id.
+     * Delete the models for the given IDs.
      *
-     * @param  string  $id
+     * @param  \Illuminate\Support\Collection|array|int|string  $ids
      */
-    public function delete($id): bool
+    public function delete(mixed $ids): bool
     {
-        return $this->repository->delete($id);
-    }
-
-    /**
-     * Delete multiple records from the database.
-     * 
-     * @param array $ids
-     */
-    public function deleteMultiple(array $ids): bool
-    {
-        return $this->repository->deleteMultiple($ids);
+        return $this->repository->delete($ids);
     }
 }

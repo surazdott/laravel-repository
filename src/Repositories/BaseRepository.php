@@ -29,35 +29,29 @@ class BaseRepository implements BaseRepositoryInterface
     /**
      * Get paginate database records.
      *
-     * @param  string  $perPage
+     * @param  int  $perPage
      */
-    public function paginate(string $perPage): LengthAwarePaginator
+    public function paginate(int $perPage): LengthAwarePaginator
     {
         return $this->model->latest()->paginate($perPage);
     }
 
     /**
-     * Get filtered database records.
+     * Find database record by ID.
      * 
-     * @param  array  $filters
+     * @param  int|string  $id
      */
-    public function filter(array $filters): Builder
-    {
-        return $this->query()->where($filters);
-    }
-
-    /**
-     * Find database record by id.
-     */
-    public function find(string $id): ?Model
+    public function find(mixed $id): ?Model
     {
         return $this->model->find($id);
     }
 
     /**
-     * Find or fail database record.
+     * Find or fail database record by ID.
+     * 
+     * @param  int|string  $id
      */
-    public function findOrFail(string $id): Model
+    public function findOrFail(mixed $id): Model
     {
         return $this->model->findOrFail($id);
     }
@@ -72,6 +66,8 @@ class BaseRepository implements BaseRepositoryInterface
 
     /**
      * Create a record in database.
+     * 
+     * @param  array  $data
      */
     public function create(array $data): Model
     {
@@ -79,28 +75,22 @@ class BaseRepository implements BaseRepositoryInterface
     }
 
     /**
-     * Update database record by id.
+     * Update database record by ID.
+     * 
+     * @param  int|string  $id,  array  $data
      */
-    public function update(string $id, array $data): bool
+    public function update(mixed $id, array $data): bool
     {
         return $this->findOrFail($id)->update($data);
     }
 
     /**
-     * Delete the record from the database.
-     */
-    public function delete(string $id): bool
-    {
-        return $this->findOrFail($id)->delete();
-    }
-
-    /**
-     * Delete multiple records from the database.
+     * Delete the models for the given IDs.
      * 
-     * @param array $ids
+     * @param  \Illuminate\Support\Collection|array|int|string  $ids
      */
-    public function deleteMultiple(array $ids): bool
+    public function delete(mixed $ids): bool
     {
-        return $this->query()->whereIn('id', $ids)->delete();
+        return $this->model->destroy($ids);
     }
 }
