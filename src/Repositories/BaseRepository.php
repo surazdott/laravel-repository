@@ -37,17 +37,9 @@ class BaseRepository implements BaseRepositoryInterface
     }
 
     /**
-     * Get filtered database records.
+     * Find database record by ID.
      * 
-     * @param  array  $filters
-     */
-    public function filter(array $filters): Builder
-    {
-        return $this->query()->where($filters);
-    }
-
-    /**
-     * Find database record by id.
+     * @param  string  $id
      */
     public function find(string $id): ?Model
     {
@@ -56,6 +48,8 @@ class BaseRepository implements BaseRepositoryInterface
 
     /**
      * Find or fail database record.
+     * 
+     * @param  string  $id
      */
     public function findOrFail(string $id): Model
     {
@@ -72,6 +66,8 @@ class BaseRepository implements BaseRepositoryInterface
 
     /**
      * Create a record in database.
+     * 
+     * @param  array  $data
      */
     public function create(array $data): Model
     {
@@ -79,7 +75,9 @@ class BaseRepository implements BaseRepositoryInterface
     }
 
     /**
-     * Update database record by id.
+     * Update database record by ID.
+     * 
+     * @param  string  $id, array $data
      */
     public function update(string $id, array $data): bool
     {
@@ -87,20 +85,12 @@ class BaseRepository implements BaseRepositoryInterface
     }
 
     /**
-     * Delete the record from the database.
+     * Delete the models for the given IDs.
+     *
+     * @param  \Illuminate\Support\Collection|array|int|string  $ids
      */
-    public function delete(string $id): bool
+    public function delete($ids): bool
     {
-        return $this->findOrFail($id)->delete();
-    }
-
-    /**
-     * Delete multiple records from the database.
-     * 
-     * @param array $ids
-     */
-    public function deleteMultiple(array $ids): bool
-    {
-        return $this->query()->whereIn('id', $ids)->delete();
+        return $this->model->destroy($ids);
     }
 }
