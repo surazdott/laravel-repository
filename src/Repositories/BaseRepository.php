@@ -89,7 +89,7 @@ class BaseRepository implements BaseRepositoryInterface
      *
      * @param  \Illuminate\Support\Collection|array|int|string  $ids
      */
-    public function delete($ids): bool
+    public function delete(mixed $ids): bool
     {
         return $this->model->destroy($ids);
     }
